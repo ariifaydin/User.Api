@@ -8,10 +8,10 @@ namespace User.Api.Repositories
     public class EFRepository<TEntity> : IEFRepository<TEntity>
                where TEntity : BaseEntity
     {
-        private readonly DbContext _context;
+        private readonly UserDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public EFRepository(DbContext context)
+        public EFRepository(UserDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
@@ -27,9 +27,11 @@ namespace User.Api.Repositories
             return _dbSet.ToList();
         }
 
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
             _dbSet.Add(entity);
+
+            return entity;
         }
 
         public void Update(TEntity entity)
