@@ -17,7 +17,7 @@ namespace User.Api.Repositories
             _dbSet = _context.Set<TEntity>();
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetById(Guid id)
         {
             return _dbSet.Find(id);
         }
@@ -34,9 +34,11 @@ namespace User.Api.Repositories
             return entity;
         }
 
-        public void Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+
+            return entity;
         }
 
         public void Delete(TEntity entity)

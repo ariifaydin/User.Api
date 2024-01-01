@@ -18,7 +18,13 @@ namespace User.Api.Controllers
         [HttpPost(Name = "")]
         public CreateUserResponseDto CreateUser([FromBody] CreateUserRequestDto requestDto)
         {
-            return _userService.CreateUser(requestDto);
+            return _userService.CreateUserAsync(requestDto);
+        }
+
+        [HttpPut(Name = "")]
+        public UpdateUserResponseDto UpdateUser([FromBody] UpdateUserRequestDto requestDto)
+        {
+            return _userService.UpdateUserAsync(requestDto);
         }
     }
 }

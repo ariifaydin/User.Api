@@ -5,6 +5,9 @@ namespace User.Api.Services
 {
     public interface IUserService
     {
-        CreateUserResponseDto CreateUser(CreateUserRequestDto createUserRequestDto);
+        CreateUserResponseDto CreateUserAsync(CreateUserRequestDto createUserRequestDto);
+       
+         UpdateUserResponseDto UpdateUserAsync(UpdateUserRequestDto updateUserRequestDto);
+         
     }
 }

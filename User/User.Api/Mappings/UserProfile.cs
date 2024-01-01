@@ -9,8 +9,10 @@ namespace User.Api.Mappings
     {
         public UserProfile()
         {
-            CreateMap<CreateUserRequestDto, UserEntity>();
-            CreateMap<UserEntity, CreateUserResponseDto>();
+            CreateMap<CreateUserRequestDto, UserEntity>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
+            CreateMap<UserEntity, CreateUserResponseDto>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
+            CreateMap<UpdateUserRequestDto, UserEntity>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
+            CreateMap<UserEntity,UpdateUserResponseDto>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
         }
     }
 }
