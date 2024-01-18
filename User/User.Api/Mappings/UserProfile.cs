@@ -13,6 +13,8 @@ namespace User.Api.Mappings
             CreateMap<UserEntity, CreateUserResponseDto>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
             CreateMap<UpdateUserRequestDto, UserEntity>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
             CreateMap<UserEntity,UpdateUserResponseDto>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
+            CreateMap<GetUserIdRequestDto, UserEntity>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
+            CreateMap<UserEntity, GetUserIdResponseDto>().ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null && !srcMember.Equals(0)));
         }
     }
 }

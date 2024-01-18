@@ -17,6 +17,13 @@ namespace User.Api.Repositories
             _dbSet = _context.Set<TEntity>();
         }
 
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null)
+        {
+            if (filter == null) return _dbSet.AsQueryable();
+
+            return _dbSet.Where(filter);
+        }
+
         public TEntity GetById(Guid id)
         {
             return _dbSet.Find(id);
@@ -41,9 +48,9 @@ namespace User.Api.Repositories
             return entity;
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(Guid id)
         {
-            _dbSet.Remove(entity);
+            _dbSet.Remove(_dbSet.Find(id));
         }
     }
 }

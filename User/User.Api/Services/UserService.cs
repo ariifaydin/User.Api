@@ -46,5 +46,26 @@ namespace User.Api.Services
 
             return _mapper.Map<UpdateUserResponseDto>(updatedDbUser);
         }
+
+        public void DeleteUserAsync(Guid id)
+        {
+            _userRepository.Delete(id);
+
+            _unitOfWork.SaveChanges();
+        }
+
+        public GetUserIdResponseDto GetUserByIdAsync(GetUserIdRequestDto getUserIdRequestDto)
+        {
+            var dbUser = _userRepository.GetById(getUserIdRequestDto.Id);
+
+            return _mapper.Map<GetUserIdResponseDto>(dbUser);
+        }
+
+        public List<GetUserIdResponseDto> GetUsers(int page, int limit)
+        {
+            var filteredUsers = _userRepository.Get().Skip((page -1) * limit).Take(limit).ToList();
+
+            return _mapper.Map<List<GetUserIdResponseDto>>(filteredUsers);
+        }
     }
 }
