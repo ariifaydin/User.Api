@@ -4,10 +4,11 @@ namespace User.Api.Repositories
 {
     public interface IEFRepository<T>
     {
-        T GetById(int id);
+        IQueryable<T> Get(Expression<Func<T, bool>> filter = null);
+        T GetById(Guid id);
         IEnumerable<T> GetAll();
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        T Add(T entity);
+        T Update(T entity);
+        void Delete(Guid id);
     }
 }

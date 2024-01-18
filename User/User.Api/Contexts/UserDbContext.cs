@@ -6,7 +6,17 @@ namespace User.Api.Contexts
 {
     public class UserDbContext: DbContext
     {
-        public virtual DbSet<UserEntity> UrlShortenings { get; set; }
+        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
+        {
+
+        }
+
+        public UserDbContext()
+        {
+                
+        }
+
+        public virtual DbSet<UserEntity> UserEntities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -26,9 +26,9 @@ namespace User.Api.UnitOfWorks.Concrete
             }
         }
 
-        public async Task<int> SaveChangesAsync()
+        public int SaveChanges()
         {
-            return await _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChanges();
         }
     }
 }
